@@ -47,7 +47,7 @@ def generate_password(length, use_special, remove_confusing, banned_words):
     if len(all_chars) == 0:
         raise ValueError("Character set is empty! Too many exclusions.")
 
-    # Generate until no banned words are found
+    # Generating untill no banned words are found
     while True:
         password = ''.join(random.choice(all_chars) for _ in range(length))
         if not any(word.lower() in password.lower() for word in banned_words if word):
@@ -71,7 +71,7 @@ def check_strength(password, use_special):
         return "Weak"
 
 
-# ---------------- MAIN PROGRAM ---------------------
+# MAIN PROGRAM 
 
 length = int(input("Enter desired password length: "))
 
@@ -96,11 +96,11 @@ else:
     pyperclip.copy(pwd)
     print("✔ Password copied to clipboard!")
 
-    # Save latest password
+    # Saving latest password locally to device 
     save_password_locally(pwd)
     print("✔ Password saved locally!")
 
-    # Log password
+    # Log password into history
     log_password(pwd)
     print("✔ Password added to history log!")
 
@@ -108,3 +108,4 @@ else:
     export_choice = input("Export password to a file? (y/n): ").lower()
     if export_choice == "y":
         export_password(pwd)
+
